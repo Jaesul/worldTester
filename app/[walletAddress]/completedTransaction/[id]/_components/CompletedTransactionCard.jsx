@@ -1,16 +1,18 @@
 import TokenWrapper from "@/app/_components/TokenWrapper";
 import TruncatedAddress from "@/app/_components/TruncatesAddress";
+import NumberWithCommas from "@/app/_components/NumberWithCommas";
 import NFTPair from "./NFTPair";
 
-export default function CompletedTransactionCard() {
+export default function CompletedTransactionCard({title, image, sellerWallet, buyerWallet, price, contractAddress, id, seller, buyer}) {
+    
     return (
         <div className="space-y-6">
 
             <div className="relative">
-                <NFTPair />
+                <NFTPair seller={seller} buyer={buyer}/>
 
             </div>
-            <h1 className="text-2xl font-semibold">2023 Tudor Black Bay 39 79660</h1>
+            <h1 className="text-2xl font-semibold">{title}</h1>
             <div className=" flex-grow flex flex-col border border-gray-400 rounded-lg">
                 <div className="px-4 py-4 border-b border-gray-400">
                     <p>Item Sold on March 15, 2025 at 10:32 AM </p>
@@ -18,7 +20,7 @@ export default function CompletedTransactionCard() {
                 <div className="px-4 py-4 space-y-4">
                     <div>
                         <label>USDC</label>
-                        <p className="text-black flex items-center gap-x-2 text-2xl font-semibold">{"12,000"} <TokenWrapper value="USDC" size={30} /></p>
+                        <p className="text-black flex items-center gap-x-2 text-2xl font-semibold"><NumberWithCommas number={price} /><TokenWrapper value="USDC" size={30} /></p>
                     </div>
 
                     <div>
@@ -34,12 +36,12 @@ export default function CompletedTransactionCard() {
                     <div className="flex gap-x-6">
                         <div className="flex flex-col gap-y-2">
                             <label className="">Seller</label>
-                            <a href={`/123/dashboard`}>
+                            <a href={`/${sellerWallet}/dashboard`}>
                                 <div className="flex justify-between items-start">
                                     <div className="relative size-20 rounded-lg bg-white shadow-lg p-4">
                                         <div class="relative w-full overflow-hidden " style={{ paddingTop: '100%' }}>
                                             <img
-                                                src="https://i.seadn.io/gae/uH3cc49dOTjoAptawOkMqa_rxWtD0TywbIO8NjEgr8IUjn1kUOIOzgxemPmXfewBPz4ELKK9SzTYHscQDPaPhBtWpuypQNz94Wq_yA?auto=format&dpr=1&w=1000"
+                                                src={seller.image}
                                                 alt="Your Image"
                                                 class="absolute top-0 left-0 w-full h-full object-cover"
                                             />
@@ -50,12 +52,12 @@ export default function CompletedTransactionCard() {
                         </div>
                         <div className="flex flex-col gap-y-2">
                             <label>Buyer</label>
-                            <a href={`/123/dashboard`} className="">
+                            <a href={`/${buyerWallet}/dashboard`} className="">
                                 <div className="flex justify-between items-start">
                                     <div className="relative size-20 rounded-lg bg-white shadow-lg p-4">
                                         <div class="relative w-full overflow-hidden " style={{ paddingTop: '100%' }}>
                                             <img
-                                                src="https://media.tenor.com/J4AYBuSgo58AAAAM/akira-tetsuo.gif"
+                                                src={buyer.image}
                                                 alt="Your Image"
                                                 class="absolute top-0 left-0 w-full h-full object-cover"
                                             />
@@ -68,8 +70,8 @@ export default function CompletedTransactionCard() {
                     <div>
                         <div>
                             <label htmlFor="">Original Listing</label>
-                            <a href={`/123/forSale/123`} className="text-blue-700 flex items-center gap-x-2 text-2xl font-semibold">
-                                2023 Tudor Black Bay 39 79660
+                            <a href={`/${sellerWallet}/forSale/${id}`} className="text-blue-700 flex items-center gap-x-2 text-2xl font-semibold">
+                                {title}
                             </a>
                         </div>
                     </div>

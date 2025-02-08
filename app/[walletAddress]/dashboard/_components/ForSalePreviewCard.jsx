@@ -1,11 +1,14 @@
 import TokenWrapper from "@/app/_components/TokenWrapper";
+import { truncateText } from "@/app/utils/helpers";
+import NumberWithCommas from "@/app/_components/NumberWithCommas";
 
-const NFTCard = ({ imageUrl, title, price, location }) => {
+const ForSalePreviewCard = ({ image, title, price, location, id, sellerWallet }) => {
+  const formattedTitle = truncateText(title, 14, '...');
     return (
-      <div className="flex flex-col bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+      <a href={`/${sellerWallet}/completedTransaction/${id}`} className="flex flex-col bg-gray-800 rounded-lg overflow-hidden shadow-lg">
         {/* Image */}
         <img
-          src={imageUrl}
+          src={image}
           alt={title}
           className="w-full h-48 object-cover"
         />
@@ -13,17 +16,17 @@ const NFTCard = ({ imageUrl, title, price, location }) => {
         {/* Card Body */}
         <div className="px-4 py-4 bg-white flex-grow flex flex-col">
           {/* Price */}
-          <p className="text-gray-500 mt-2 flex items-center gap-x-1">{price} <TokenWrapper value="USDC" size={20} /></p>
+          <p className="text-gray-500 flex items-center gap-x-1"><NumberWithCommas number={price} /><TokenWrapper value="USDC" size={20} /></p>
           
           {/* Title */}
-          <h3 className="text-black text-lg font-semibold">{title}</h3>
-  
+          <h3 className="text-black text-lg font-semibold">{formattedTitle}</h3>
+      
   
           {/* Last Sale */}
           <p className="text-gray-500 text-sm mt-auto">{location}</p>
         </div>
-      </div>
+      </a>
     );
   };
   
-  export default NFTCard;
+  export default ForSalePreviewCard;

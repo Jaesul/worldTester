@@ -19,11 +19,11 @@ export const transactionRecords = pgTable("transaction_records", {
 	likes: numeric().default('0').notNull(),
 	isSold: boolean("is_sold").default(false).notNull(),
 	location: text(),
-	image: text("image"),
-	price: text("price"),
+	isComplete: boolean("is_complete").default(false).notNull(),
+	image: text(),
+	price: text(),
 	txid: text("TXID"),
 	contractAddress: text("contract_address"),
-	isComplete: boolean("is_complete").default(false).notNull(),
 }, (table) => [
 	foreignKey({
 			columns: [table.buyerWallet],
