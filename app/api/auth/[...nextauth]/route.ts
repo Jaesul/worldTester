@@ -1,4 +1,4 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { getServerSession, NextAuthOptions } from "next-auth";
 
 const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -31,6 +31,7 @@ const authOptions: NextAuthOptions = {
   },
   debug: process.env.NODE_ENV === "development",
 };
+export const getServerAuthSession = () => getServerSession(authOptions);
 
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

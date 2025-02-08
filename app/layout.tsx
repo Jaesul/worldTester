@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import MiniKitProvider from "@/components/minikit-provider";
+import MiniKitProvider from "@/app/_components/minikit-provider";
 import dynamic from "next/dynamic";
-import NextAuthProvider from "@/components/next-auth-provider";
+import NextAuthProvider from "@/app/_components/next-auth-provider";
+import Nav from "@/app/_components/Nav";
+import "@worldcoin/mini-apps-ui-kit-react/styles.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,21 +21,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const ErudaProvider = dynamic(
-    () => import("../components/Eruda").then((c) => c.ErudaProvider),
+    () => import("./_components/Eruda").then((c) => c.ErudaProvider),
     {
       ssr: false,
     }
   );
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <NextAuthProvider>
-          <ErudaProvider>
-            <MiniKitProvider>
-              {children}
-            </MiniKitProvider>
-          </ErudaProvider>
-        </NextAuthProvider>
+    <html lang="en" className="">
+      <body className={inter.className + ""}>
+        <div className="h-full w-full overflow-y-auto">
+          <NextAuthProvider>
+            <ErudaProvider>
+              <MiniKitProvider>
+                <Nav />
+                {children}
+              </MiniKitProvider>
+            </ErudaProvider>
+          </NextAuthProvider>
+        </div>
       </body>
     </html>
   );
