@@ -9,12 +9,12 @@ export default async function TransactionHistoryBtn({ walletAddress }) {
     return (
         <Drawer>
             <DrawerTrigger>
-                <Button variant="secondary" className="bg-white">Transaction History</Button>
+                <Button variant="secondary" className="bg-white">Reciepts</Button>
             </DrawerTrigger>
             <DrawerContent className="h-[96%] pb-4">
                 <div className="max-w-md px-4 w-full mx-auto rounded-t-[10px] flex flex-col items-center flex-grow">
                     <Typography component="h2" variant="heading" level={3}>
-                        Transaction History
+                        Reciepts
                     </Typography>
                     <div className="no-scrollbar mx-auto w-full flex flex-col flex-grow flex-basis-0 overflow-auto gap-4 p-4" style={{
                         // Explicitly setting flex-basis ensures that the remaining space in the flex container is used,
@@ -27,6 +27,7 @@ export default async function TransactionHistoryBtn({ walletAddress }) {
                                 sellerWalletAddress={item.sellerWallet}
                                 price={item.price}
                                 id={item.id}
+                                img={item.image}
                             />
                         ))}
 

@@ -31,7 +31,7 @@ export async function getForSaleItemsByTitle(title) {
   const data = await db.
                         select()
                         .from(transactionRecords)
-                        .where(ilike(transactionRecords.title, `%${title}%`));
+                        .where(and(ilike(transactionRecords.title, `%${title}%`), eq(transactionRecords.isComplete, false)))
   return data;
 }
 

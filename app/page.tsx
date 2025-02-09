@@ -18,9 +18,8 @@ export default async function Home() {
     <main className="min-h-screen pt-2">
       <section>
         <div>
-          <img src="https://zeztf3numh.ufs.sh/f/gXmXXD82lOXidvHsZSt2Nt4HFZOAbxnC89EjsqSYhrfBVlKQ" alt="hello" />
-          <div className="p-4">
-            <h1 className="text-4xl mb-2 font-bold">World General Store</h1>
+          <div className="p-6">
+            <h1 className="text-8xl mt-8 mb-2 font-bold">World General Store</h1>
             <p className="text-4xl">
               <span >A World Chain powered used marketplace for</span>
             </p>

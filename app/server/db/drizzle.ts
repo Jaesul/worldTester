@@ -8,6 +8,6 @@ import * as schema from "../db/schema.ts/schema";
  */
 
 
-const conn = "postgresql://postgres.guzairvmrynbmzbqfzzk:shanonloveshentai@aws-0-us-west-1.pooler.supabase.com:6543/postgres"
+const conn = process.env.DATABASE_URL ?? "";
 
 export const db = drizzle(conn, { schema });

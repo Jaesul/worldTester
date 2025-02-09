@@ -3,13 +3,13 @@ import TruncatedAddress from "@/app/_components/TruncatesAddress";
 import NumberWithCommas from "@/app/_components/NumberWithCommas";
 import NFTPair from "./NFTPair";
 
-export default function CompletedTransactionCard({title, image, sellerWallet, buyerWallet, price, contractAddress, id, seller, buyer}) {
-    
+export default function CompletedTransactionCard({title, image, sellerWallet, buyerWallet, price, contractAddress, id, seller, buyer, sellerNft, buyerNft}) {
+    console.log(sellerNft);
     return (
         <div className="space-y-6">
 
             <div className="relative">
-                <NFTPair seller={seller} buyer={buyer}/>
+                <NFTPair seller={seller} buyer={buyer} sellerNft={sellerNft} buyerNft={buyerNft}/>
 
             </div>
             <h1 className="text-2xl font-semibold">{title}</h1>
@@ -24,8 +24,10 @@ export default function CompletedTransactionCard({title, image, sellerWallet, bu
                     </div>
 
                     <div>
-                        <label>Contract Address</label>
+                        <label>NFT Addresses</label>
                         <p className="text-black flex items-center gap-x-2 text-2xl font-semibold"><TruncatedAddress address="0x20eE7B720f4E4c4FFcB00C4065cdae55271aECCa" startLength={6} endLength={4} /></p>
+                        <p className="text-black flex items-center gap-x-2 text-2xl font-semibold"><TruncatedAddress address="0x43eE7B720f4E4c4FFcB00C4065cdae44283aGCbd" startLength={6} endLength={4} /></p>
+
                     </div>
 
                     <div>

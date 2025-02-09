@@ -4,7 +4,6 @@ export default async function ResultsPage({ params, searchParams }) {
 
     const {query} = searchParams;
     const items = await getForSaleItemsByTitle(query);
-    console.log(items);
 
     function renderItems(items) {
         return items.map((item) => {
